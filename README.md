@@ -1,3 +1,3 @@
 # Escape Studios Game Jam 2018
-Theme:
+Theme: /
 Team: Jing Tan
