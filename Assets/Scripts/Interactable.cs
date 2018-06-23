@@ -8,23 +8,18 @@ public class Interactable : MonoBehaviour
 {
     // --------------------------------------------------------------
 
-    [Serializable]
-    public class InteractEvent : UnityEvent { }
+    [SerializeField]
+    protected UnityEvent OnInteract;
+
+    [SerializeField]
+    protected bool m_ActivateOnTouch = false;
+
+    [SerializeField]
+    protected string m_Description;
 
     // --------------------------------------------------------------
 
-    [SerializeField]
-    private InteractEvent OnInteracted;
-
-    [SerializeField]
-    private bool m_ActivateOnTouch = false;
-
-    [SerializeField]
-    private string m_Description;
-
-    // --------------------------------------------------------------
-
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         // TODO: Display following in UI:
         Debug.Log(m_Description);
@@ -36,7 +31,7 @@ public class Interactable : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire2") || m_ActivateOnTouch)
             {
-                OnInteracted.Invoke();
+                OnInteract.Invoke();
             }
         }   
     }

@@ -1,11 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Item : MonoBehaviour
+public enum ItemType { GUN, SEED, COIN, }
+
+public class Item : Interactable
 {
-    public string Name { get; }
+    // --------------------------------------------------------------
 
+    [SerializeField]
+    private ItemType m_Type;
 
+    // --------------------------------------------------------------
+
+    private void OnTriggerStay(Collider other)
+    {
+        Inventory inventory = other.GetComponent<Inventory>();
+
+        if (inventory != null)
+        {
+            if (m_ActivateOnTouch || Input.GetButtonDown("Fire2"))
+            {
+                inventory.Pickup(m_Type);
+                Destroy(gameObject);
+            }
+        }
+        
+        
+    }
 
 }

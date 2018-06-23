@@ -15,6 +15,8 @@ public class Gun : MonoBehaviour
 
     private bool m_IsFiring = false;
 
+    private bool m_FacingLeft = false;
+
     // --------------------------------------------------------------
 
     private void Update()
@@ -34,21 +36,20 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
-        Instantiate(m_Projectile, transform.position, transform.rotation);
+        Instantiate(m_Projectile, transform.GetChild(0).position, transform.rotation);
     }
 
     private void UpdateRotation()
     {
-        float cos = Input.GetAxis("RightHorizontal");
-        float sin = Input.GetAxis("RightVertical");
-
-        if (sin == 0f && cos == 0f)
+        transform.rotation = Quaternion.LookRotation(transform.parent.right);
+        if (Input.GetAxis("Horizontal") < 0 || m_FacingLeft)
         {
-            return;
+            m_FacingLeft = true;
+            transform.Rotate(0f, 180f, 0f);
         }
-
-        float rotationAngle = Mathf.Atan2(cos, sin) * Mathf.Rad2Deg;
-
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, rotationAngle, transform.eulerAngles.z);
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            m_FacingLeft = false;
+        }
     }
 }
