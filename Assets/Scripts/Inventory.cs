@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
     // --------------------------------------------------------------
 
-    private HashSet<ItemType> m_Items = new HashSet<ItemType>();
+    public List<ItemType> m_Items = new List<ItemType>();
 
     // --------------------------------------------------------------
 

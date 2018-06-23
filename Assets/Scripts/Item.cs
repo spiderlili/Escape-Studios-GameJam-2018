@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum ItemType { GUN, SEED, COIN, }
+public enum ItemType { GUN, SEED, COIN, BOOK }
 
 public class Item : Interactable
 {
@@ -24,7 +24,7 @@ public class Item : Interactable
 
         if (inventory != null)
         {
-            if (m_ActivateOnTouch || Input.GetButtonDown("Fire2"))
+            if (m_ActivateOnTouch || Input.GetButtonDown("Fire1"))
             {
                 if (inventory.Pickup(m_Type))
                 {

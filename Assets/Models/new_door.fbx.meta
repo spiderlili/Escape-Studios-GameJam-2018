@@ -7,20 +7,30 @@ ModelImporter:
     100002: new_door_frame
     100004: new_door_left
     100006: new_door_right
+    100008: new_door_frame.001
+    100010: new_door_frame.002
     400000: //RootNode
     400002: new_door_frame
     400004: new_door_left
     400006: new_door_right
+    400008: new_door_frame.001
+    400010: new_door_frame.002
     2100000: No Name
     2300000: new_door_frame
     2300002: new_door_left
     2300004: new_door_right
+    2300006: new_door_frame.001
+    2300008: new_door_frame.002
     3300000: new_door_frame
     3300002: new_door_left
     3300004: new_door_right
+    3300006: new_door_frame.001
+    3300008: new_door_frame.002
     4300000: new_door_left
     4300002: new_door_right
     4300004: new_door_frame
+    4300006: new_door_frame.002
+    4300008: new_door_frame.001
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -37,7 +37,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            if (Input.GetButtonDown("Fire2") || m_ActivateOnTouch)
+            if (Input.GetButtonDown("Fire1") || m_ActivateOnTouch)
             {
                 OnInteract.Invoke();
             }
