@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TimeState { PAST, FUTURE };
+
 public class TimeController : MonoBehaviour
 {
     // --------------------------------------------------------------
@@ -12,15 +14,20 @@ public class TimeController : MonoBehaviour
 
     // --------------------------------------------------------------
 
-    private TimeController m_Instance;
+
+    // --------------------------------------------------------------
+
+    public static TimeController Instance { get; private set; }
+
+    public TimeState CurrentState { get; private set; } = TimeState.PAST;
 
     // --------------------------------------------------------------
 
     private void Awake()
     {
-        if (m_Instance == null)
+        if (Instance == null)
         {
-            m_Instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -31,8 +38,9 @@ public class TimeController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
         {
+            CurrentState = CurrentState == TimeState.PAST ? TimeState.FUTURE : TimeState.PAST;
             OnTimeSwap();
         }
     }
