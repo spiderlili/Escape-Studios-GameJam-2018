@@ -7,6 +7,10 @@ public class Gun : MonoBehaviour
 {
     // --------------------------------------------------------------
 
+    private enum Direction { LEFT, RIGHT, FORWARD, BACK }
+
+    // --------------------------------------------------------------
+
     [SerializeField] private GameObject m_Projectile;
 
     [SerializeField] private float m_SecsBetweenShots;
@@ -16,6 +20,8 @@ public class Gun : MonoBehaviour
     private bool m_IsFiring = false;
 
     private bool m_FacingLeft = false;
+
+    private Direction m_AimDir = Direction.RIGHT;
 
     // --------------------------------------------------------------
 
@@ -42,14 +48,24 @@ public class Gun : MonoBehaviour
     private void UpdateRotation()
     {
         transform.rotation = Quaternion.LookRotation(transform.parent.right);
-        if (Input.GetAxis("Horizontal") < 0 || m_FacingLeft)
+        if (Input.GetAxis("Horizontal") < 0 || m_AimDir == Direction.LEFT)
         {
-            m_FacingLeft = true;
+            m_AimDir = Direction.LEFT;
             transform.Rotate(0f, 180f, 0f);
         }
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxis("Horizontal") > 0 || m_AimDir == Direction.RIGHT)
         {
-            m_FacingLeft = false;
+            m_AimDir = Direction.RIGHT;
+        }
+        if (Input.GetAxis("Vertical") < 0 || m_AimDir == Direction.BACK)
+        {
+            m_AimDir = Direction.BACK;
+            transform.Rotate(0f, 90, 0f);
+        }
+        if (Input.GetAxis("Vertical") > 0 || m_AimDir == Direction.FORWARD)
+        {
+            m_AimDir = Direction.FORWARD;
+            transform.Rotate(0f, -90f, 0f);
         }
     }
 }

@@ -22,7 +22,7 @@ public class Interactable : MonoBehaviour
     protected void OnTriggerEnter(Collider other)
     {
         // TODO: Display following in UI:
-        Debug.Log(m_Description);
+        Debug.Log(name + ": " + m_Description);
     }
 
     private void OnTriggerStay(Collider other)
