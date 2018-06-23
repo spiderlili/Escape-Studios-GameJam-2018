@@ -30,8 +30,6 @@ public class Item : Interactable
                 if (m_DestroyOnPickup) Destroy(gameObject);
             }
         }
-        
-        
     }
 
 }

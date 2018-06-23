@@ -21,8 +21,13 @@ public class Interactable : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
-        // TODO: Display following in UI:
-        Debug.Log(name + ": " + m_Description);
+        if (other.GetComponent<PlayerController>() != null)
+        {
+            if (m_Description != "")
+            {
+                TutorialManager.Instance.QueueTutorial(m_Description);
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)

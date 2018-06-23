@@ -18,7 +18,9 @@ public class TutorialManager : MonoBehaviour
 
     private Animator m_TextAnim;
 
-    public TutorialManager Instance { get; private set; }
+    private bool m_TutorialActive = false;
+
+    public static TutorialManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -37,12 +39,23 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (m_TutorialActive)
+        {
+            Vector3 offset = m_OffsetFromPlayer;
+            if (m_Camera.WorldToViewportPoint(m_Player.position).x < 0.5f)
+            {
+                offset = new Vector3(-offset.x, offset.y, offset.z);
+            }
+            m_Text.transform.position = m_Camera.WorldToScreenPoint(m_Player.position + offset);
+        }
+    }
+
     public void QueueTutorial(string text)
     {
         m_Text.text = text;
-
-        Vector3 offset = (m_Camera.WorldToViewportPoint(m_Player.position).x < 0.5f) ? m_OffsetFromPlayer : -m_OffsetFromPlayer;
-        transform.position = m_Camera.WorldToScreenPoint(m_Player.position + offset);
+        m_TutorialActive = true;
 
         m_TextAnim.SetBool("isVisible", true);
         Invoke("HideTutorial", m_TutorialTime);
@@ -50,6 +63,7 @@ public class TutorialManager : MonoBehaviour
 
     private void HideTutorial()
     {
+        m_TutorialActive = false;
         m_TextAnim.SetBool("isVisible", false);
     }
 
