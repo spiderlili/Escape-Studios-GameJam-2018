@@ -12,7 +12,7 @@ public class TimeSwap : MonoBehaviour
 
     // --------------------------------------------------------------
 
-    private void Awake()
+    private void Start()
     {
         m_OldVersion = transform.GetChild(0).gameObject;
         m_NewVersion = transform.GetChild(1).gameObject;
@@ -37,5 +37,10 @@ public class TimeSwap : MonoBehaviour
     {
         m_NewVersion.SetActive(!m_NewVersion.activeInHierarchy);
         m_OldVersion.SetActive(!m_OldVersion.activeInHierarchy);
+    }
+
+    private void OnDisable()
+    {
+        TimeController.OnTimeSwap -= OnSwapModels;
     }
 }
