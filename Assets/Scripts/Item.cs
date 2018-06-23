@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seed : MonoBehaviour, IItem
+public class Item : MonoBehaviour
 {
-    public string Name { get; } = "Seed";
+    public string Name { get; }
+
+
 
 }

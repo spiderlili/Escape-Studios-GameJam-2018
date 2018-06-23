@@ -25,11 +25,14 @@ public class PlayerController : MonoBehaviour
 
     private float m_VerticalSpeed;
 
+    private Animator m_Anim;
+
     // --------------------------------------------------------------
 
     private void Awake()
     {
         m_CharController = GetComponent<CharacterController>();
+        m_Anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -39,6 +42,8 @@ public class PlayerController : MonoBehaviour
         m_MovementOffset = (m_MovementDirection * m_WalkSpeed + new Vector3(0, m_VerticalSpeed, 0)) * Time.deltaTime;
 
         m_CharController.Move(m_MovementOffset);
+
+        transform.rotation = Quaternion.LookRotation(m_Camera.transform.forward);
 
         if (Input.GetButtonDown("Jump") && m_CharController.isGrounded)
         {
@@ -52,6 +57,10 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
+        m_Anim.SetBool("isMoving", horizontalInput > 0 || verticalInput > 0);
+        m_Anim.SetFloat("xMovement", horizontalInput);
+        m_Anim.SetFloat("yMovement", verticalInput);
 
         m_MovementDirection = new Vector3(m_Camera.transform.forward.x, 0, m_Camera.transform.forward.z) * verticalInput +
                               new Vector3(m_Camera.transform.right.x, 0, m_Camera.transform.right.z) * horizontalInput;
