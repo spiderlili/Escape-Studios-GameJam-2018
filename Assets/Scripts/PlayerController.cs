@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     // --------------------------------------------------------------
 
+    [SerializeField] private Camera m_Camera;
+
     [SerializeField] private float m_WalkSpeed;
 
     [SerializeField] private float m_GravityScale = 60f;
@@ -51,8 +53,11 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        m_MovementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        m_MovementDirection = new Vector3(m_Camera.transform.forward.x, 0, m_Camera.transform.forward.z) * verticalInput +
+                              new Vector3(m_Camera.transform.right.x, 0, m_Camera.transform.right.z) * horizontalInput;
     }
+
+
 
     private void ApplyGravity()
     {
