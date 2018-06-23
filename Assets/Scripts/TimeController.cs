@@ -14,6 +14,8 @@ public class TimeController : MonoBehaviour
 
     // --------------------------------------------------------------
 
+    [SerializeField]
+    private AudioClip m_TimeWarpSound;
 
     // --------------------------------------------------------------
 
@@ -41,6 +43,7 @@ public class TimeController : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             CurrentState = CurrentState == TimeState.PAST ? TimeState.FUTURE : TimeState.PAST;
+            SoundPlayer.Instance.Play(m_TimeWarpSound);
             OnTimeSwap();
         }
     }

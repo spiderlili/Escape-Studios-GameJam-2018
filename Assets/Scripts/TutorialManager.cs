@@ -46,7 +46,7 @@ public class TutorialManager : MonoBehaviour
             Vector3 offset = m_OffsetFromPlayer;
             if (m_Camera.WorldToViewportPoint(m_Player.position).x < 0.5f)
             {
-                offset = new Vector3(-offset.x, offset.y, offset.z);
+                offset = new Vector3(-offset.x, offset.y, -offset.z);
             }
             m_Text.transform.position = m_Camera.WorldToScreenPoint(m_Player.position + offset);
         }

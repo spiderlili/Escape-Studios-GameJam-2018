@@ -15,9 +15,9 @@ public class Inventory : MonoBehaviour
 
     // --------------------------------------------------------------
 
-    public void Pickup(ItemType i)
+    public bool Pickup(ItemType i)
     {
-        Debug.Log("Picked up a " + i);
+        if (m_Items.Contains(i)) return false;
 
         switch (i)
         {
@@ -26,8 +26,8 @@ public class Inventory : MonoBehaviour
                 break;
         }
 
-
         m_Items.Add(i);
+        return true;
     }
 
     public void Remove(ItemType i)

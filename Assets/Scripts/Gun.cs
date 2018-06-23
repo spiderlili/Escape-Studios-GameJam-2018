@@ -15,9 +15,9 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private float m_SecsBetweenShots;
 
-    // --------------------------------------------------------------
+    [SerializeField] private AudioClip[] m_FireShots;
 
-    private bool m_IsFiring = false;
+    // --------------------------------------------------------------
 
     private Direction m_AimDir = Direction.RIGHT;
 
@@ -26,21 +26,20 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         UpdateRotation();
-        if (Input.GetAxisRaw("Fire3") > 0 && !m_IsFiring)
+        if (Input.GetButtonDown("Fire3"))
         {
             InvokeRepeating("Fire", 0.000001f, m_SecsBetweenShots);
-            m_IsFiring = true;
         }
-        if (Input.GetAxisRaw("Fire3") < Mathf.Epsilon)
+        if (Input.GetButtonDown("Fire3"))
         {
             CancelInvoke("Fire");
-            m_IsFiring = false;
         }
     }
 
     private void Fire()
     {
         Instantiate(m_Projectile, transform.GetChild(0).position, transform.rotation);
+        SoundPlayer.Instance.PlayRandom(m_FireShots);
     }
 
     private void UpdateRotation()

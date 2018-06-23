@@ -26,8 +26,10 @@ public class Item : Interactable
         {
             if (m_ActivateOnTouch || Input.GetButtonDown("Fire2"))
             {
-                inventory.Pickup(m_Type);
-                if (m_DestroyOnPickup) Destroy(gameObject);
+                if (inventory.Pickup(m_Type))
+                {
+                    if (m_DestroyOnPickup) Destroy(gameObject);
+                }
             }
         }
     }
