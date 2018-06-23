@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
         {
             InvokeRepeating("Fire", 0.000001f, m_SecsBetweenShots);
         }
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonUp("Fire3"))
         {
             CancelInvoke("Fire");
         }

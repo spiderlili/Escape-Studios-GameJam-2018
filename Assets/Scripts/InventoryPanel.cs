@@ -23,10 +23,16 @@ public class InventoryPanel : MonoBehaviour
         {
             m_ImageSlots[i] = transform.GetChild(i).GetComponent<Image>();
         }
+    }
 
+    private void OnEnable()
+    {
         Inventory.OnItemPickup += OnItemChange;
         Inventory.OnItemDrop += OnItemChange;
+
+        OnItemChange(ItemType.BOOK);
     }
+
 
     private void OnItemChange(ItemType item)
     {

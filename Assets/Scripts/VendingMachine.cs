@@ -7,6 +7,9 @@ public class VendingMachine : MonoBehaviour
     [SerializeField] private GameObject m_SeedPrefab;
     [SerializeField] private GameObject m_CandyPrefab;
 
+    [SerializeField] private Transform m_DropSpot;
+
+
     [SerializeField] private string m_EnabledDescription;
     [SerializeField] private string m_DisabledDescription;
 
@@ -49,6 +52,14 @@ public class VendingMachine : MonoBehaviour
     public void Activate()
     {
         // TODO
+
+        if (TimeController.Instance.CurrentState == TimeState.FUTURE)
+        {
+            Instantiate(m_SeedPrefab, m_DropSpot.position, Quaternion.identity);
+        }
+
+        GameObject.Find("Coin stack").GetComponent<Item>().enabled = false;
+
     }
 
     private void OnDisable()

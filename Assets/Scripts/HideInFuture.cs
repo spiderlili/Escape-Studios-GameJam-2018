@@ -21,6 +21,10 @@ public class HideInFuture : MonoBehaviour
         {
             child.gameObject.SetActive(visible);
         }
+    }
 
+    private void OnDisable()
+    {
+        TimeController.OnTimeSwap -= OnTimeSwap;
     }
 }

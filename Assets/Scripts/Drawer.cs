@@ -11,6 +11,7 @@ public class Drawer : MonoBehaviour
         if (!m_Opened)
         {
             GetComponent<Animator>().SetTrigger("openTrigger");
+            GetComponent<Interactable>().enabled = false;
         }
     }
 

@@ -12,8 +12,6 @@ public class Inventory : MonoBehaviour
 
     // --------------------------------------------------------------
 
-    [SerializeField]
-    private GameObject m_GunPrefab;
 
     // --------------------------------------------------------------
 
@@ -28,7 +26,7 @@ public class Inventory : MonoBehaviour
         switch (i)
         {
             case ItemType.GUN:
-                Instantiate(m_GunPrefab, transform);
+                transform.GetChild(2).gameObject.SetActive(true);
                 break;
         }
 
