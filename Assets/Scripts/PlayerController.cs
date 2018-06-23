@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float m_WalkSpeed;
 
+    [SerializeField] private float m_GravityScale = 60f;
+
+    [SerializeField] private float m_JumpHeight = 4f;
+
     // --------------------------------------------------------------
 
     private CharacterController m_CharController;
@@ -34,6 +38,12 @@ public class PlayerController : MonoBehaviour
 
         m_CharController.Move(m_MovementOffset);
 
+        if (Input.GetButtonDown("Jump") && m_CharController.isGrounded)
+        {
+            m_VerticalSpeed = Mathf.Sqrt(m_JumpHeight * m_GravityScale);
+        }
+
+        ApplyGravity();
     }
 
     private void UpdateMovementDirection()
@@ -42,5 +52,10 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         m_MovementDirection = new Vector3(horizontalInput, 0, verticalInput);
+    }
+
+    private void ApplyGravity()
+    {
+        m_VerticalSpeed -= m_GravityScale * Time.deltaTime;
     }
 }
