@@ -15,7 +15,10 @@ public class Interactable : MonoBehaviour
     protected bool m_ActivateOnTouch = false;
 
     [SerializeField]
-    protected string m_Description;
+    public string m_Description;
+
+    [SerializeField]
+    public TutorialType m_PromptSize;
 
     // --------------------------------------------------------------
 
@@ -25,7 +28,7 @@ public class Interactable : MonoBehaviour
         {
             if (m_Description != "")
             {
-                TutorialManager.Instance.QueueTutorial(m_Description);
+                TutorialManager.Instance.QueueTutorial(m_Description, m_PromptSize);
             }
         }
     }

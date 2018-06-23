@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum TutorialType { SMALL, BIG }
+
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private Vector3 m_OffsetFromPlayer;
@@ -14,9 +16,10 @@ public class TutorialManager : MonoBehaviour
 
     private Camera m_Camera;
 
-    private Text m_Text;
+    private Text m_BigText;
+    private Text m_SmallText;
 
-    private Animator m_TextAnim;
+    private Text m_ActiveText;
 
     private bool m_TutorialActive = false;
 
@@ -28,8 +31,11 @@ public class TutorialManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            m_Text = GetComponentInChildren<Text>();
-            m_TextAnim = m_Text.GetComponent<Animator>();
+
+            Text[] texts = GetComponentsInChildren<Text>();
+            m_BigText = texts[0];
+            m_SmallText = texts[1];
+
             m_Player = FindObjectOfType<PlayerController>().transform;
             m_Camera = Camera.main;
         }
@@ -48,23 +54,18 @@ public class TutorialManager : MonoBehaviour
             {
                 offset = new Vector3(-offset.x, offset.y, -offset.z);
             }
-            m_Text.transform.position = m_Camera.WorldToScreenPoint(m_Player.position + offset);
+            m_ActiveText.transform.position = m_Camera.WorldToScreenPoint(m_Player.position + offset);
         }
     }
 
-    public void QueueTutorial(string text)
+    public void QueueTutorial(string text, TutorialType type)
     {
-        m_Text.text = text;
+        m_ActiveText = type == TutorialType.BIG ? m_BigText : m_SmallText;
+
+        m_ActiveText.text = text;
         m_TutorialActive = true;
 
-        m_TextAnim.SetBool("isVisible", true);
-        Invoke("HideTutorial", m_TutorialTime);
-    }
-
-    private void HideTutorial()
-    {
-        m_TutorialActive = false;
-        m_TextAnim.SetBool("isVisible", false);
+        m_ActiveText.GetComponent<Animator>().SetTrigger("showTrigger");
     }
 
 }

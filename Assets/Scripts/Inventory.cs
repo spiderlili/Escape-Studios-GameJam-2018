@@ -6,6 +6,12 @@ public class Inventory : MonoBehaviour
 {
     // --------------------------------------------------------------
 
+    public delegate void ItemEvent(ItemType i);
+    public static event ItemEvent OnItemPickup;
+    public static event ItemEvent OnItemDrop;
+
+    // --------------------------------------------------------------
+
     [SerializeField]
     private GameObject m_GunPrefab;
 
@@ -27,12 +33,14 @@ public class Inventory : MonoBehaviour
         }
 
         m_Items.Add(i);
+        OnItemPickup(i);
         return true;
     }
 
     public void Remove(ItemType i)
     {
         m_Items.Remove(i);
+        OnItemDrop(i);
     }
 
     public bool HasItem(ItemType i)
