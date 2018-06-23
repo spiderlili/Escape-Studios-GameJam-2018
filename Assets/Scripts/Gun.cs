@@ -19,8 +19,6 @@ public class Gun : MonoBehaviour
 
     private bool m_IsFiring = false;
 
-    private bool m_FacingLeft = false;
-
     private Direction m_AimDir = Direction.RIGHT;
 
     // --------------------------------------------------------------

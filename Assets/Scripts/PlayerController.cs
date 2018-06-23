@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        m_Anim.SetBool("isMoving", horizontalInput > 0 || verticalInput > 0);
+        m_Anim.SetBool("isMoving", Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0);
         m_Anim.SetFloat("xMovement", horizontalInput);
         m_Anim.SetFloat("yMovement", verticalInput);
 

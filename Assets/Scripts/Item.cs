@@ -13,6 +13,9 @@ public class Item : Interactable
     [SerializeField]
     private ItemType m_Type;
 
+    [SerializeField]
+    private bool m_DestroyOnPickup = true;
+
     // --------------------------------------------------------------
 
     private void OnTriggerStay(Collider other)
@@ -24,7 +27,7 @@ public class Item : Interactable
             if (m_ActivateOnTouch || Input.GetButtonDown("Fire2"))
             {
                 inventory.Pickup(m_Type);
-                Destroy(gameObject);
+                if (m_DestroyOnPickup) Destroy(gameObject);
             }
         }
         
