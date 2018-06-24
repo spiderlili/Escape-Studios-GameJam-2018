@@ -51,15 +51,22 @@ public class VendingMachine : MonoBehaviour
 
     public void Activate()
     {
-        // TODO
+        if (!m_IsEnabled) return;
+
+        m_Player.Remove(ItemType.COIN);
 
         if (TimeController.Instance.CurrentState == TimeState.FUTURE)
         {
             Instantiate(m_SeedPrefab, m_DropSpot.position, Quaternion.identity);
+            Destroy(m_Interact);
+            OnDisable();
+        }
+        else
+        {
+            Instantiate(m_CandyPrefab, m_DropSpot.position, Quaternion.identity);
         }
 
-        GameObject.Find("Coin stack").GetComponent<Item>().enabled = false;
-
+        Destroy(GameObject.Find("Coin stack").GetComponent<Item>());
     }
 
     private void OnDisable()
