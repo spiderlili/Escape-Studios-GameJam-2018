@@ -9,13 +9,17 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Camera m_Camera;
 
-    [SerializeField] private float m_WalkSpeed;
+    [SerializeField] private float m_WalkSpeed = 2f;
+
+    [SerializeField] private float m_RunSpeed = 5f;
 
     [SerializeField] private float m_GravityScale = 60f;
 
     [SerializeField] private float m_JumpHeight = 4f;
 
     // --------------------------------------------------------------
+
+    private float m_MovementSpeed;
 
     private CharacterController m_CharController;
 
@@ -33,13 +37,27 @@ public class PlayerController : MonoBehaviour
     {
         m_CharController = GetComponent<CharacterController>();
         m_Anim = GetComponent<Animator>();
+        m_MovementSpeed = m_WalkSpeed;
+
+        Plant.OnMonsterSprout += OnSpeedUp;
+        TreeMonster.OnMonsterDeath += OnSlowDown;
+    }
+
+    private void OnSlowDown()
+    {
+        m_MovementSpeed = m_WalkSpeed;
+    }
+
+    private void OnSpeedUp()
+    {
+        m_MovementSpeed = m_RunSpeed;
     }
 
     private void Update()
     {
         UpdateMovementDirection();
 
-        m_MovementOffset = (m_MovementDirection * m_WalkSpeed + new Vector3(0, m_VerticalSpeed, 0)) * Time.deltaTime;
+        m_MovementOffset = (m_MovementDirection * m_MovementSpeed + new Vector3(0, m_VerticalSpeed, 0)) * Time.deltaTime;
 
         m_CharController.Move(m_MovementOffset);
 
@@ -72,4 +90,11 @@ public class PlayerController : MonoBehaviour
     {
         m_VerticalSpeed -= m_GravityScale * Time.deltaTime;
     }
+
+    private void OnDisable()
+    {
+        Plant.OnMonsterSprout -= OnSpeedUp;
+        TreeMonster.OnMonsterDeath -= OnSlowDown;
+    }
+
 }

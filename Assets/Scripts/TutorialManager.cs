@@ -27,10 +27,9 @@ public class TutorialManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
+        //if (Instance == null)
+        //{
             Instance = this;
-            DontDestroyOnLoad(gameObject);
 
             Text[] texts = GetComponentsInChildren<Text>();
             m_BigText = texts[0];
@@ -38,11 +37,7 @@ public class TutorialManager : MonoBehaviour
 
             m_Player = FindObjectOfType<PlayerController>().transform;
             m_Camera = Camera.main;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //}
     }
 
     private void Update()

@@ -26,7 +26,8 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        // TODO:
+        GetComponentInChildren<Renderer>().enabled = false;
+        FindObjectOfType<LevelRestarter>().OnGameOver();
         Debug.Log("Player died!");
     }
 }

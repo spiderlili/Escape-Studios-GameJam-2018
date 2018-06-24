@@ -64,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1495301091390666
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9277adc57052f41b24114d8a5f8e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GunPrefab: {fileID: 0}
   m_Items: 
 --- !u!114 &114322512369161110
 MonoBehaviour:
@@ -257,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b1231deccdb2e42b2bb220a8d5f083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_StartHealth: 3
 --- !u!114 &114382497665624524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,7 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 0}
-  m_WalkSpeed: 5
+  m_WalkSpeed: 2
+  m_RunSpeed: 5
   m_GravityScale: 40
   m_JumpHeight: 2
 --- !u!119 &119872804473521560

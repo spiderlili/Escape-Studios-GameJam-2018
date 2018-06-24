@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class TreeMonster : MonoBehaviour
 {
+    public delegate void MonsterEvent();
+    public static event MonsterEvent OnMonsterDeath;
+
     private NavMeshAgent m_Nav;
 
     private Camera m_Camera;
@@ -14,12 +17,37 @@ public class TreeMonster : MonoBehaviour
 
     private Animator m_Anim;
 
+    private Renderer m_Rend;
+
+    private Collider[] m_Colliders;
+
     private void Awake()
     {
         m_Nav = GetComponent<NavMeshAgent>();
         m_Anim = GetComponent<Animator>();
         m_Player = FindObjectOfType<PlayerController>().transform;
         m_Camera = Camera.main;
+        m_Rend = GetComponentInChildren<Renderer>();
+        m_Colliders = GetComponentsInChildren<Collider>();
+
+        TimeController.OnTimeSwap += OnFreeze;
+    }
+
+    private void OnFreeze()
+    {
+        bool isEnabled = false;
+
+        if (TimeController.Instance.CurrentState == TimeState.FUTURE)
+        {
+            isEnabled = true;
+        }
+
+        m_Rend.enabled = isEnabled;
+        m_Nav.enabled = isEnabled;
+        foreach (Collider col in m_Colliders)
+        {
+            col.enabled = isEnabled;
+        }
     }
 
     private void Update()
@@ -50,6 +78,7 @@ public class TreeMonster : MonoBehaviour
 
     private void Death()
     {
+        OnMonsterDeath();
         Destroy(gameObject);
     }
 

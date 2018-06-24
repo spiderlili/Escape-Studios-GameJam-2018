@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+    public delegate void PlantEvent();
+    public static event PlantEvent OnMonsterSprout;
+
     [SerializeField] private GameObject m_TreeMonsterPrefab;
 
     private Animator m_Animator;
@@ -25,9 +28,22 @@ public class Plant : MonoBehaviour
         if (m_SeedPlanted)
         {
             Instantiate(m_TreeMonsterPrefab, transform.GetChild(0).position, Quaternion.identity);
+            OnMonsterSprout();
             m_SeedPlanted = false;
             Destroy(this);
         }
+        else if (m_Activated)
+        {
+            if (TimeController.Instance.CurrentState == TimeState.PAST)
+            {
+                GetComponent<Interactable>().m_IsActive = true;
+            }
+            else
+            {
+                GetComponent<Interactable>().m_IsActive = false;
+            }
+        }
+        
     }
 
     private void OnItemPickup(ItemType i)
@@ -35,7 +51,10 @@ public class Plant : MonoBehaviour
         if (i == ItemType.SEED)
         {
             m_Activated = true;
-            GetComponent<Interactable>().m_IsActive = true;
+            if (TimeController.Instance.CurrentState == TimeState.PAST)
+            {
+                GetComponent<Interactable>().m_IsActive = true;
+            }   
         }
     }
 
@@ -43,12 +62,14 @@ public class Plant : MonoBehaviour
     {
         m_Animator.SetTrigger("plantTrigger");
         m_SeedPlanted = true;
+        FindObjectOfType<Inventory>().Remove(ItemType.SEED);
         Destroy(GetComponent<Interactable>());
     }
 
     private void OnDisable()
     {
         Inventory.OnItemPickup -= OnItemPickup;
+        TimeController.OnTimeSwap -= OnTimeSwap;
     }
 
 
