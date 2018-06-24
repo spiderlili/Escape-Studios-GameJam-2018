@@ -43,6 +43,12 @@ public class PlayerController : MonoBehaviour
         TreeMonster.OnMonsterDeath += OnSlowDown;
     }
 
+    public void SetMovementActive(bool active)
+    {
+        m_CharController.enabled = active;
+        m_Anim.enabled = active;
+    }
+
     private void OnSlowDown()
     {
         m_MovementSpeed = m_WalkSpeed;

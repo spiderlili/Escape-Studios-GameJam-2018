@@ -31,6 +31,8 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private Sprite m_FutureAlex;
     [SerializeField] private Sprite m_Robot;
 
+    [SerializeField] private AudioClip[] m_RobotSounds;
+
     public static DialogueController Instance { get; private set; }
 
     private Image m_DialogueBox;
@@ -97,6 +99,11 @@ public class DialogueController : MonoBehaviour
                 m_Dialogue.text = "It seems I’ve found a weapon of mass destruction.";
                 isFinished = true;
                 break;
+            case DialogueEvent.INCORRECT_CODE:
+                m_CharacterIcon.sprite = m_FutureAlex;
+                m_Dialogue.text = "Pox! I’m terrible at these things...";
+                isFinished = true;
+                break;
             case DialogueEvent.MONSTER_KILL:
                 switch (index)
                 {
@@ -116,6 +123,7 @@ public class DialogueController : MonoBehaviour
                     case 0:
                         m_CharacterIcon.sprite = m_Robot;
                         m_Dialogue.text = "Hello! I am Epoch, your robot companion for the evening! How may I be of service sir?";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 1:
                         m_CharacterIcon.sprite = m_FutureAlex;
@@ -124,6 +132,7 @@ public class DialogueController : MonoBehaviour
                     case 2:
                         m_CharacterIcon.sprite = m_Robot;
                         m_Dialogue.text = "A plethora of commands sir, I am specialised for education and leisure, would you like a backrub?";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 3:
                         m_CharacterIcon.sprite = m_FutureAlex;
@@ -132,6 +141,7 @@ public class DialogueController : MonoBehaviour
                     case 4:
                         m_CharacterIcon.sprite = m_Robot;
                         m_Dialogue.text = "Anything documented sir, from how to create a homemade bomb to the translation of ancient texts.";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 5:
                         m_CharacterIcon.sprite = m_FutureAlex;
@@ -146,6 +156,7 @@ public class DialogueController : MonoBehaviour
                     case 0:
                         m_CharacterIcon.sprite = m_Robot;
                         m_Dialogue.text = "My scan tells me a passage of this book seems alien to you. Do you need assistance?";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 1:
                         m_CharacterIcon.sprite = m_FutureAlex;
@@ -154,15 +165,19 @@ public class DialogueController : MonoBehaviour
                     case 2:
                         m_CharacterIcon.sprite = m_Robot;
                         m_Dialogue.text = "TRANSLATING…";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 3:
                         m_Dialogue.text = "TRANSLATION COMPLETE\nThe text goes as follows:";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 4:
                         m_Dialogue.text = "“My first plays with crosses,\nMy second is eighty before score";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 5:
                         m_Dialogue.text = "My third is a handful\nAnd my fourth’s a winner.”";
+                        SoundPlayer.Instance.PlayRandom(m_RobotSounds);
                         break;
                     case 6:
                         m_CharacterIcon.sprite = m_FutureAlex;
