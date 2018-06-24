@@ -149,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d73aa84cc7b464a903d37d248eb33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_KeyPrefab: {fileID: 1584798645469672, guid: 1b08a333dbe7f054dbffb5b52159e409,
+    type: 2}
 --- !u!119 &119999187943814292
 Projector:
   m_ObjectHideFlags: 1

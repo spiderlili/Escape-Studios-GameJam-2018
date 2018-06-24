@@ -42,6 +42,12 @@ public class Inventory : MonoBehaviour
     public void Remove(ItemType i)
     {
         m_Items.Remove(i);
+
+        if (i == ItemType.GUN)
+        {
+            transform.GetChild(2).gameObject.SetActive(false);
+        }
+
         OnItemDrop(i);
     }
 

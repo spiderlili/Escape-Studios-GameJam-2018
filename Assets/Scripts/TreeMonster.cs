@@ -9,6 +9,8 @@ public class TreeMonster : MonoBehaviour
     public delegate void MonsterEvent();
     public static event MonsterEvent OnMonsterDeath;
 
+    [SerializeField] private GameObject m_KeyPrefab;
+
     private NavMeshAgent m_Nav;
 
     private Camera m_Camera;
@@ -79,8 +81,9 @@ public class TreeMonster : MonoBehaviour
     private void Death()
     {
         OnMonsterDeath();
+        Instantiate(m_KeyPrefab, transform.position, Quaternion.identity);
+        FindObjectOfType<Inventory>().Remove(ItemType.GUN);
         Destroy(gameObject);
     }
-
 
 }
