@@ -31,6 +31,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private Sprite m_FutureAlex;
     [SerializeField] private Sprite m_Robot;
 
+    public static DialogueController Instance { get; private set; }
 
     private Image m_DialogueBox;
     private Image m_CharacterIcon;
@@ -42,6 +43,7 @@ public class DialogueController : MonoBehaviour
     private void Awake()
     {
         TimeController.OnTimeSwap += OnTimeSwap;
+        Instance = this;
 
         m_Animator = GetComponent<Animator>();
         m_DialogueBox = GetComponent<Image>();
@@ -91,9 +93,22 @@ public class DialogueController : MonoBehaviour
                 isFinished = true;
                 break;
             case DialogueEvent.GUN_COLLECT:
-                m_CharacterIcon.sprite = m_PastAlex;
+                m_CharacterIcon.sprite = m_FutureAlex;
                 m_Dialogue.text = "It seems I’ve found a weapon of mass destruction.";
                 isFinished = true;
+                break;
+            case DialogueEvent.MONSTER_KILL:
+                switch (index)
+                {
+                    case 0:
+                        m_CharacterIcon.sprite = m_FutureAlex;
+                        m_Dialogue.text = "Seed you later… no… Grow back from whence you… no… tree-t me better next time…";
+                        break;
+                    case 1:
+                        m_Dialogue.text = "Ah, sod it.\nSo much for creativity.";
+                        isFinished = true;
+                        break;
+                }
                 break;
             case DialogueEvent.ROBOT_TALK:
                 switch (index)
@@ -116,7 +131,7 @@ public class DialogueController : MonoBehaviour
                         break;
                     case 4:
                         m_CharacterIcon.sprite = m_Robot;
-                        m_Dialogue.text = "Anything documented sir, from how to create a homemade bomb to the translation of ancient texts, I have a huge database!";
+                        m_Dialogue.text = "Anything documented sir, from how to create a homemade bomb to the translation of ancient texts.";
                         break;
                     case 5:
                         m_CharacterIcon.sprite = m_FutureAlex;
@@ -144,7 +159,14 @@ public class DialogueController : MonoBehaviour
                         m_Dialogue.text = "TRANSLATION COMPLETE\nThe text goes as follows:";
                         break;
                     case 4:
-                        m_Dialogue.text = "“My first plays with crosses,\nMy second is eighty before score\nMy third is a handful\nAnd my fourth’s a winner";
+                        m_Dialogue.text = "“My first plays with crosses,\nMy second is eighty before score";
+                        break;
+                    case 5:
+                        m_Dialogue.text = "My third is a handful\nAnd my fourth’s a winner.”";
+                        break;
+                    case 6:
+                        m_CharacterIcon.sprite = m_FutureAlex;
+                        m_Dialogue.text = "...\nCryptic.";
                         isFinished = true;
                         break;
                 }

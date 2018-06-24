@@ -27,11 +27,17 @@ public class Inventory : MonoBehaviour
         {
             case ItemType.GUN:
                 transform.GetChild(2).gameObject.SetActive(true);
+                DialogueController.Instance.StartDialogue(DialogueEvent.GUN_COLLECT);
                 break;
             case ItemType.KEY:
                 FindObjectOfType<BookShelf>().Activate();
                 break;
-
+            case ItemType.COIN:
+                DialogueController.Instance.StartDialogue(DialogueEvent.COIN_COLLECT);
+                break;
+            case ItemType.BOOK:
+                DialogueController.Instance.StartDialogue(DialogueEvent.BOOK_COLLECT);
+                break;
         }
 
         m_Items.Add(i);

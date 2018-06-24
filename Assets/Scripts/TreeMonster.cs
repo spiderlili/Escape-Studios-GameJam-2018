@@ -73,6 +73,7 @@ public class TreeMonster : MonoBehaviour
 
     public void Die()
     {
+        DialogueController.Instance.StartDialogue(DialogueEvent.MONSTER_KILL);
         m_Nav.enabled = false;
         m_Anim.SetTrigger("deathTrigger");
         Invoke("Death", 3f);
