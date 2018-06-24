@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: NorthwestWalking
+  m_Name: Rightwalking
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -29,7 +29,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.53333336
+        time: 0.5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -40,26 +40,22 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_FlipX
-    path: Sprite
-    classID: 212
+    attribute: m_IsActive
+    path: Dust
+    classID: 1
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 2f1045a2530780f4386602550f26f214, type: 3}
-    - time: 0.06666667
-      value: {fileID: 21300000, guid: 0ec3a29e2fb9bd744a1283d9fde495dd, type: 3}
-    - time: 0.13333334
-      value: {fileID: 21300000, guid: 57d4e8cf0497b204fbb2651d58da7199, type: 3}
-    - time: 0.2
-      value: {fileID: 21300000, guid: 03f5c458891ec8d4191da90f761d7107, type: 3}
-    - time: 0.3
-      value: {fileID: 21300000, guid: e4b4567e293b3e848913ad7af45b90a6, type: 3}
-    - time: 0.43333334
-      value: {fileID: 21300000, guid: bd93e7b4593e5f84595d340fdaa473fa, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 2f1045a2530780f4386602550f26f214, type: 3}
+      value: {fileID: 21300000, guid: 3227bff1c4a5d1540995dc5247749f95, type: 3}
+    - time: 0.1
+      value: {fileID: 21300000, guid: c975da646f6410e4fb02b643726f0f33, type: 3}
+    - time: 0.23333333
+      value: {fileID: 21300000, guid: a0c4b98c3b545fb4fb871661a94e8b12, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 01eda7c380ebbf844beaec975f56e1d5, type: 3}
+    - time: 0.46666667
+      value: {fileID: 21300000, guid: 10c7a7a4b1737d348a93a0711e59ab05, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -72,10 +68,10 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 850496168
-      attribute: 555744692
+      path: 879896029
+      attribute: 2086281974
       script: {fileID: 0}
-      typeID: 212
+      typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
@@ -86,19 +82,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 2f1045a2530780f4386602550f26f214, type: 3}
-    - {fileID: 21300000, guid: 0ec3a29e2fb9bd744a1283d9fde495dd, type: 3}
-    - {fileID: 21300000, guid: 57d4e8cf0497b204fbb2651d58da7199, type: 3}
-    - {fileID: 21300000, guid: 03f5c458891ec8d4191da90f761d7107, type: 3}
-    - {fileID: 21300000, guid: e4b4567e293b3e848913ad7af45b90a6, type: 3}
-    - {fileID: 21300000, guid: bd93e7b4593e5f84595d340fdaa473fa, type: 3}
-    - {fileID: 21300000, guid: 2f1045a2530780f4386602550f26f214, type: 3}
+    - {fileID: 21300000, guid: 3227bff1c4a5d1540995dc5247749f95, type: 3}
+    - {fileID: 21300000, guid: c975da646f6410e4fb02b643726f0f33, type: 3}
+    - {fileID: 21300000, guid: a0c4b98c3b545fb4fb871661a94e8b12, type: 3}
+    - {fileID: 21300000, guid: 01eda7c380ebbf844beaec975f56e1d5, type: 3}
+    - {fileID: 21300000, guid: 10c7a7a4b1737d348a93a0711e59ab05, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.53333336
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -127,7 +121,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.53333336
+        time: 0.5
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -138,9 +132,9 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_FlipX
-    path: Sprite
-    classID: 212
+    attribute: m_IsActive
+    path: Dust
+    classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
