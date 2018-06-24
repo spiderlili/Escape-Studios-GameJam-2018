@@ -43,6 +43,17 @@ public class PlayerController : MonoBehaviour
         TreeMonster.OnMonsterDeath += OnSlowDown;
     }
 
+    private void Start()
+    {
+        SetMovementActive(false);
+        Begin();
+    }
+
+    public void Begin()
+    {
+        DialogueController.Instance.StartDialogue(DialogueEvent.GAME_START);
+    }
+
     public void SetMovementActive(bool active)
     {
         m_CharController.enabled = active;

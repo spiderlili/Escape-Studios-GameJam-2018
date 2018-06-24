@@ -42,6 +42,8 @@ public class DialogueController : MonoBehaviour
 
     private Text m_Dialogue;
 
+    private PlayerController m_Player;
+
     private void Awake()
     {
         TimeController.OnTimeSwap += OnTimeSwap;
@@ -51,6 +53,8 @@ public class DialogueController : MonoBehaviour
         m_DialogueBox = GetComponent<Image>();
         m_Dialogue = GetComponentInChildren<Text>();
         m_CharacterIcon = transform.GetChild(0).GetComponent<Image>();
+
+        m_Player = FindObjectOfType<PlayerController>();
 
     }
 
@@ -84,6 +88,26 @@ public class DialogueController : MonoBehaviour
         bool isFinished = false;
         switch (d)
         {
+            case DialogueEvent.GAME_START:
+                switch(index)
+                {
+                    case 0:
+                        m_CharacterIcon.sprite = m_PastAlex;
+                        m_Dialogue.text = "Well here I am. ...Where am I?";
+                        break;
+                    case 1:
+                        m_Dialogue.text = "The air feels… different… I should check my stat bio connectivity.";
+                        break;
+                    case 2:
+                        m_Dialogue.text = "Wow! I'm way back! Time to forward this space!";
+                        break;
+                    case 3:
+                        m_Dialogue.text = "Let's see… LB should take me to where I want to go…";
+                        isFinished = true;
+                        m_Player.SetMovementActive(true);
+                        break;
+                }
+                break;
             case DialogueEvent.BOOK_COLLECT:
                 m_CharacterIcon.sprite = m_PastAlex;
                 m_Dialogue.text = "Seems like gobbledigook to me…";

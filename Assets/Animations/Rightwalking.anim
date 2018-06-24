@@ -29,7 +29,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.43333334
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -48,13 +48,15 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 3227bff1c4a5d1540995dc5247749f95, type: 3}
-    - time: 0.1
+    - time: 0.06666667
       value: {fileID: 21300000, guid: c975da646f6410e4fb02b643726f0f33, type: 3}
-    - time: 0.23333333
+    - time: 0.16666667
       value: {fileID: 21300000, guid: a0c4b98c3b545fb4fb871661a94e8b12, type: 3}
-    - time: 0.33333334
+    - time: 0.26666668
+      value: {fileID: 21300000, guid: a0c4b98c3b545fb4fb871661a94e8b12, type: 3}
+    - time: 0.4
       value: {fileID: 21300000, guid: 01eda7c380ebbf844beaec975f56e1d5, type: 3}
-    - time: 0.46666667
+    - time: 0.5
       value: {fileID: 21300000, guid: 10c7a7a4b1737d348a93a0711e59ab05, type: 3}
     attribute: m_Sprite
     path: Sprite
@@ -85,6 +87,7 @@ AnimationClip:
     - {fileID: 21300000, guid: 3227bff1c4a5d1540995dc5247749f95, type: 3}
     - {fileID: 21300000, guid: c975da646f6410e4fb02b643726f0f33, type: 3}
     - {fileID: 21300000, guid: a0c4b98c3b545fb4fb871661a94e8b12, type: 3}
+    - {fileID: 21300000, guid: a0c4b98c3b545fb4fb871661a94e8b12, type: 3}
     - {fileID: 21300000, guid: 01eda7c380ebbf844beaec975f56e1d5, type: 3}
     - {fileID: 21300000, guid: 10c7a7a4b1737d348a93a0711e59ab05, type: 3}
   m_AnimationClipSettings:
@@ -92,7 +95,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.53333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -121,7 +124,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.43333334
         value: 1
         inSlope: Infinity
         outSlope: Infinity
