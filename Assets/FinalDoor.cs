@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class FinalDoor : MonoBehaviour
 {
+    [SerializeField]
+    private Animator m_PanelAnim;
+
+    [SerializeField]
+    private GameObject m_ToDestroy;
 
     public void TheEnd()
     {
@@ -13,8 +18,8 @@ public class FinalDoor : MonoBehaviour
 
     public void FadeOut()
     {
-        // TODO:
-
+        m_PanelAnim.SetTrigger("winTrigger");
+        Destroy(m_ToDestroy);
     }
 	
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public enum DialogueEvent
 {
     GAME_START,
+    FIRST_WARP,
     COIN_COLLECT,
     SEED_COLLECT,
     GUN_COLLECT,
@@ -107,6 +108,11 @@ public class DialogueController : MonoBehaviour
                         m_Player.SetMovementActive(true);
                         break;
                 }
+                break;
+            case DialogueEvent.FIRST_WARP:
+                m_CharacterIcon.sprite = m_FutureAlex;
+                m_Dialogue.text = "Wow! It's been a while since I did a proper time warp...";
+                isFinished = true;
                 break;
             case DialogueEvent.BOOK_COLLECT:
                 m_CharacterIcon.sprite = m_PastAlex;

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelRestarter : MonoBehaviour
 {
+
     public void OnGameOver()
     {
         GetComponent<Animator>().SetTrigger("deathTrigger");

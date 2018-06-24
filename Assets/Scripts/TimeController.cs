@@ -32,6 +32,8 @@ public class TimeController : MonoBehaviour
 
     // --------------------------------------------------------------
 
+    private bool m_FirstSwapDone = false;
+
     private bool m_PerformingSwap = false;
 
     private float m_SwapStartTime;
@@ -78,6 +80,12 @@ public class TimeController : MonoBehaviour
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
         CurrentState = CurrentState == TimeState.PAST ? TimeState.FUTURE : TimeState.PAST;
         OnTimeSwap();
+
+        if (!m_FirstSwapDone)
+        {
+            m_FirstSwapDone = true;
+            DialogueController.Instance.StartDialogue(DialogueEvent.FIRST_WARP);
+        }
     }
 
 }
