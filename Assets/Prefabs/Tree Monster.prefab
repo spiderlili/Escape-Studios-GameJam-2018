@@ -151,6 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_KeyPrefab: {fileID: 1584798645469672, guid: 1b08a333dbe7f054dbffb5b52159e409,
     type: 2}
+  m_AppearanceSound: {fileID: 8300000, guid: 2bdca85f1a341734bbae62ed6d49f9a5, type: 3}
+  m_DeathSound: {fileID: 8300000, guid: df72c900690ce7f44b4bd983f76d268c, type: 3}
 --- !u!119 &119999187943814292
 Projector:
   m_ObjectHideFlags: 1

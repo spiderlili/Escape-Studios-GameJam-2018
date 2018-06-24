@@ -11,6 +11,10 @@ public class TreeMonster : MonoBehaviour
 
     [SerializeField] private GameObject m_KeyPrefab;
 
+    [SerializeField] private AudioClip m_AppearanceSound;
+
+    [SerializeField] private AudioClip m_DeathSound;
+
     private NavMeshAgent m_Nav;
 
     private Camera m_Camera;
@@ -33,6 +37,8 @@ public class TreeMonster : MonoBehaviour
         m_Colliders = GetComponentsInChildren<Collider>();
 
         TimeController.OnTimeSwap += OnFreeze;
+
+        SoundPlayer.Instance.Play(m_AppearanceSound);
     }
 
     private void OnFreeze()
@@ -73,6 +79,7 @@ public class TreeMonster : MonoBehaviour
 
     public void Die()
     {
+        SoundPlayer.Instance.Play(m_DeathSound);
         DialogueController.Instance.StartDialogue(DialogueEvent.MONSTER_KILL);
         m_Nav.enabled = false;
         m_Anim.SetTrigger("deathTrigger");

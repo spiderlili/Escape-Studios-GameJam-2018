@@ -9,6 +9,8 @@ public class Plant : MonoBehaviour
 
     [SerializeField] private GameObject m_TreeMonsterPrefab;
 
+    [SerializeField] private AudioClip m_PlantSound;
+
     private Animator m_Animator;
 
     private bool m_Activated = false;
@@ -60,6 +62,7 @@ public class Plant : MonoBehaviour
 
     public void PlantSeed()
     {
+        SoundPlayer.Instance.Play(m_PlantSound);
         m_Animator.SetTrigger("plantTrigger");
         m_SeedPlanted = true;
         FindObjectOfType<Inventory>().Remove(ItemType.SEED);

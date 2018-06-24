@@ -7,6 +7,7 @@ public class SceneSwitcher : MonoBehaviour
 {
     public void OnButtonPressed()
     {
+        GetComponent<AudioSource>().Play();
         GetComponentInParent<Animator>().SetTrigger("fadeTrigger");
         Invoke("LoadIt", 0.5f);
     }

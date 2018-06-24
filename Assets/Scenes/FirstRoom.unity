@@ -3459,6 +3459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelAnim: {fileID: 2059111734}
   m_ToDestroy: {fileID: 1939803149}
+  m_FinalSound: {fileID: 8300000, guid: e22c7faba43351c44b00f2f0666ed6d8, type: 3}
 --- !u!114 &915621408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7688,6 +7689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TreeMonsterPrefab: {fileID: 1664093234413112, guid: 92a97ecd9f1cc284d95862403a3293b1,
     type: 2}
+  m_PlantSound: {fileID: 8300000, guid: 66e7007c2943c6f41a5974caa7b39b7a, type: 3}
 --- !u!114 &1727882904
 MonoBehaviour:
   m_ObjectHideFlags: 0

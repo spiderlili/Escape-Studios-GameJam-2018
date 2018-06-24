@@ -10,6 +10,9 @@ public class FinalDoor : MonoBehaviour
     [SerializeField]
     private GameObject m_ToDestroy;
 
+    [SerializeField]
+    private AudioClip m_FinalSound;
+
     public void TheEnd()
     {
         GetComponent<Animator>().SetTrigger("openTrigger");
@@ -18,6 +21,7 @@ public class FinalDoor : MonoBehaviour
 
     public void FadeOut()
     {
+        SoundPlayer.Instance.Play(m_FinalSound);
         m_PanelAnim.SetTrigger("winTrigger");
         Destroy(m_ToDestroy);
     }
