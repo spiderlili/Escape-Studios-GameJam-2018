@@ -11,6 +11,8 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     protected UnityEvent OnInteract;
 
+    public bool m_IsActive = true;
+
     [SerializeField]
     protected bool m_ActivateOnTouch = false;
 
@@ -24,6 +26,7 @@ public class Interactable : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
+        if (!m_IsActive) return;
         if (other.GetComponent<PlayerController>() != null)
         {
             if (m_Description != "")
@@ -35,6 +38,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (!m_IsActive) return;
         if (other.GetComponent<PlayerController>() != null)
         {
             if (Input.GetButtonDown("Fire1") || m_ActivateOnTouch)

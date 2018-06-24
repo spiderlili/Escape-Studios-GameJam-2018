@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 95779788696032202}
   - component: {fileID: 195588390232712622}
   - component: {fileID: 114798967433586458}
+  - component: {fileID: 136685050648612188}
   m_Layer: 0
   m_Name: Tree Monster
   m_TagString: Untagged
@@ -69,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664093234413112}
   m_LocalRotation: {x: -0, y: 0.26466817, z: -0, w: 0.96433955}
-  m_LocalPosition: {x: 0.9079236, y: 0.83, z: -1.7781103}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819482074462364}
@@ -112,7 +113,7 @@ Animator:
   m_GameObject: {fileID: 1664093234413112}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 23d10bce72f4ba94386f95e120f09254, type: 2}
+  m_Controller: {fileID: 9100000, guid: 00ba1f3d8e28c27408da427ae2ef1a79, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -158,6 +159,19 @@ CapsuleCollider:
   m_GameObject: {fileID: 1664093234413112}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.74
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136685050648612188
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664093234413112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 0.74

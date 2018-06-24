@@ -17,7 +17,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Destroy(gameObject);
+        TreeMonster treeMonster = other.GetComponent<TreeMonster>();
+        if (treeMonster != null)
+        {
+            treeMonster.Die();
+        }
     }
 
 }
