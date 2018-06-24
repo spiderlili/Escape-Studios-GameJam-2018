@@ -7,6 +7,10 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int m_StartHealth = 3;
 
+    [SerializeField] private float m_InvincibilityTime = 1f;
+
+    private bool m_IsInvincible = false;
+
     private float m_CurrentHealth;
 
     private void Awake()
@@ -16,12 +20,24 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (m_IsInvincible) return;
+
         Debug.Log("Player took damage!");
         m_CurrentHealth--;
         if (m_CurrentHealth <= 0)
         {
             Die();
         }
+        else
+        {
+            m_IsInvincible = true;
+            Invoke("DeactivateInvincibility", m_InvincibilityTime);
+        }
+    }
+
+    private void DeactivateInvincibility()
+    {
+        m_IsInvincible = false;
     }
 
     private void Die()

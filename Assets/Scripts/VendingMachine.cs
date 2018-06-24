@@ -63,7 +63,8 @@ public class VendingMachine : MonoBehaviour
         }
         else
         {
-            Instantiate(m_CandyPrefab, m_DropSpot.position, Quaternion.identity);
+            // TODO
+            //Instantiate(m_CandyPrefab, m_DropSpot.position, Quaternion.identity);
         }
 
         Destroy(GameObject.Find("Coin stack").GetComponent<Item>());

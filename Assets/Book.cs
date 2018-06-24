@@ -8,7 +8,7 @@ public class Book : MonoBehaviour
     public void OnPickup()
     {
         FindObjectOfType<Inventory>().Pickup(ItemType.BOOK);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
 }

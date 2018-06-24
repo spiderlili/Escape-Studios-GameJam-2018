@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
                 transform.GetChild(2).gameObject.SetActive(true);
                 break;
             case ItemType.KEY:
-                FindObjectOfType<BookShelf>().GetComponent<Interactable>().m_IsActive = true;
+                FindObjectOfType<BookShelf>().Activate();
                 break;
 
         }

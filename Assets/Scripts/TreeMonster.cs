@@ -81,9 +81,14 @@ public class TreeMonster : MonoBehaviour
     private void Death()
     {
         OnMonsterDeath();
-        Instantiate(m_KeyPrefab, transform.position, Quaternion.identity);
+        Instantiate(m_KeyPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
         FindObjectOfType<Inventory>().Remove(ItemType.GUN);
         Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        TimeController.OnTimeSwap -= OnFreeze;
     }
 
 }
