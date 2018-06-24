@@ -8,6 +8,10 @@ public class TimeController : MonoBehaviour
 {
     // --------------------------------------------------------------
 
+    [SerializeField] private Animator m_PanelAnim;
+
+    // --------------------------------------------------------------
+
     public delegate void TimeSwapEvent();
 
     public static event TimeSwapEvent OnTimeSwap;
@@ -17,6 +21,9 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private AudioClip m_TimeWarpSound;
 
+    [SerializeField]
+    private float m_SwapTime = 0.5f;
+
     // --------------------------------------------------------------
 
     public static TimeController Instance { get; private set; }
@@ -25,23 +32,52 @@ public class TimeController : MonoBehaviour
 
     // --------------------------------------------------------------
 
+    private bool m_PerformingSwap = false;
+
+    private float m_SwapStartTime;
+
+    private float m_TimeRemaining;
+
+    // --------------------------------------------------------------
+
     private void Awake()
     {
-       // if (Instance == null)
-        //{
-            Instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
+        Instance = this;
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (m_PerformingSwap)
         {
-            CurrentState = CurrentState == TimeState.PAST ? TimeState.FUTURE : TimeState.PAST;
-            SoundPlayer.Instance.Play(m_TimeWarpSound);
-            OnTimeSwap();
+            m_TimeRemaining -= Time.unscaledDeltaTime;
+            if (m_TimeRemaining <= 0f)
+            {
+                PerformSwap();
+            }
         }
+        else if (Input.GetButtonDown("Fire2"))
+        {
+            m_PanelAnim.SetTrigger("swapTrigger");
+            StartSwap();
+        }
+    }
+
+    private void StartSwap()
+    {
+        SoundPlayer.Instance.Play(m_TimeWarpSound);
+        m_PerformingSwap = true;
+        m_TimeRemaining = m_SwapTime;
+        Time.timeScale = 0.1f * Time.timeScale;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+    }
+
+    private void PerformSwap()
+    {
+        m_PerformingSwap = false;
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        CurrentState = CurrentState == TimeState.PAST ? TimeState.FUTURE : TimeState.PAST;
+        OnTimeSwap();
     }
 
 }

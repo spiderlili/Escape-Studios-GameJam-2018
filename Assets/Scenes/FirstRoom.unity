@@ -2070,7 +2070,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af16a9709d896a49bfc30afd733e572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PanelAnim: {fileID: 2059111734}
   m_TimeWarpSound: {fileID: 8300000, guid: a5f9c4bb41c97d045b672678d4539fa1, type: 3}
+  m_SwapTime: 1.5
 --- !u!1 &480446252
 GameObject:
   m_ObjectHideFlags: 0
