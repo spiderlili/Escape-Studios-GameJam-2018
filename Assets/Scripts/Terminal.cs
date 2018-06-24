@@ -20,6 +20,9 @@ public class Terminal : MonoBehaviour
     private AudioClip[] m_FailureSounds;
 
     [SerializeField]
+    private AudioClip m_InteractSound;
+
+    [SerializeField]
     private Text m_TerminalMsg;
 
     [SerializeField]
@@ -42,6 +45,7 @@ public class Terminal : MonoBehaviour
 
     public void Activate()
     {
+        SoundPlayer.Instance.Play(m_InteractSound);
         m_Screen.sprite = m_PasswordScreen;
         SetTerminalActive(true);
         m_Input.interactable = true;

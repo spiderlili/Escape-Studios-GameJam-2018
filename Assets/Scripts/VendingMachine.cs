@@ -9,6 +9,7 @@ public class VendingMachine : MonoBehaviour
 
     [SerializeField] private Transform m_DropSpot;
 
+    [SerializeField] private AudioClip m_SeedSound;
 
     [SerializeField] private string m_EnabledDescription;
     [SerializeField] private string m_DisabledDescription;
@@ -57,17 +58,16 @@ public class VendingMachine : MonoBehaviour
 
         if (TimeController.Instance.CurrentState == TimeState.FUTURE)
         {
+            SoundPlayer.Instance.Play(m_SeedSound);
             Instantiate(m_SeedPrefab, m_DropSpot.position, Quaternion.identity);
             Destroy(m_Interact);
             OnDisable();
+            Destroy(GameObject.Find("Coin stack").GetComponent<Item>());
         }
         else
         {
-            // TODO
-            //Instantiate(m_CandyPrefab, m_DropSpot.position, Quaternion.identity);
+            DialogueController.Instance.StartDialogue(DialogueEvent.SWEETS_COLLECT);
         }
-
-        Destroy(GameObject.Find("Coin stack").GetComponent<Item>());
     }
 
     private void OnDisable()

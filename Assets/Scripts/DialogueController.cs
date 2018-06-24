@@ -10,6 +10,7 @@ public enum DialogueEvent
     COIN_COLLECT,
     SEED_COLLECT,
     GUN_COLLECT,
+    SWEETS_COLLECT,
     MONSTER_ENCOUNTER,
     MONSTER_KILL,
     ROBOT_TALK,
@@ -80,6 +81,7 @@ public class DialogueController : MonoBehaviour
     {
         m_Animator.SetBool("isVisible", true);
 
+        StopAllCoroutines();
         StartCoroutine(RunDialogue(d, 0));
 
     }
@@ -112,6 +114,11 @@ public class DialogueController : MonoBehaviour
             case DialogueEvent.FIRST_WARP:
                 m_CharacterIcon.sprite = m_FutureAlex;
                 m_Dialogue.text = "Wow! It's been a while since I did a proper time warp...";
+                isFinished = true;
+                break;
+            case DialogueEvent.SWEETS_COLLECT:
+                m_CharacterIcon.sprite = m_PastAlex;
+                m_Dialogue.text = "Mmmm yummy sweets! But I could use something more... organic.";
                 isFinished = true;
                 break;
             case DialogueEvent.BOOK_COLLECT:
@@ -236,6 +243,7 @@ public class DialogueController : MonoBehaviour
     private void CloseBox()
     {
         m_Animator.SetBool("isVisible", false);
+        StopAllCoroutines();
     }
 
     private void OnDisable()
