@@ -9,6 +9,7 @@ public class InventoryPanel : MonoBehaviour
     [SerializeField] private Sprite m_SeedSprite;
     [SerializeField] private Sprite m_CoinSprite;
     [SerializeField] private Sprite m_BookSprite;
+    [SerializeField] private Sprite m_KeySprite;
 
     private Image[] m_ImageSlots;
 
@@ -58,7 +59,9 @@ public class InventoryPanel : MonoBehaviour
                 case ItemType.BOOK:
                     m_ImageSlots[i].sprite = m_BookSprite;
                     break;
-
+                case ItemType.KEY:
+                    m_ImageSlots[i].sprite = m_KeySprite;
+                    break;
             }
             m_ImageSlots[i].enabled = true;
         }

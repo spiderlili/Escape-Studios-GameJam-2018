@@ -28,6 +28,10 @@ public class Inventory : MonoBehaviour
             case ItemType.GUN:
                 transform.GetChild(2).gameObject.SetActive(true);
                 break;
+            case ItemType.KEY:
+                FindObjectOfType<BookShelf>().GetComponent<Interactable>().m_IsActive = true;
+                break;
+
         }
 
         m_Items.Add(i);

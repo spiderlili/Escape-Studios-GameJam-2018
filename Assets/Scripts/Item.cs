@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum ItemType { GUN, SEED, COIN, BOOK }
+public enum ItemType { GUN, SEED, COIN, BOOK, KEY }
 
 public class Item : Interactable
 {
