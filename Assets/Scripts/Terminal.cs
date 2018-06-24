@@ -22,6 +22,9 @@ public class Terminal : MonoBehaviour
     [SerializeField]
     private Text m_TerminalMsg;
 
+    [SerializeField]
+    private FinalDoor m_FinalDoor;
+
     private PlayerController m_Player;
 
     private Image m_Screen;
@@ -127,7 +130,9 @@ public class Terminal : MonoBehaviour
         }
         else
         {
-
+            m_FinalDoor.TheEnd();
+            SetTerminalActive(false);
+            Destroy(this);
         }
     }
 
