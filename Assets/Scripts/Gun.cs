@@ -45,15 +45,6 @@ public class Gun : MonoBehaviour
     private void UpdateRotation()
     {
         transform.rotation = Quaternion.LookRotation(transform.parent.right);
-        if (Input.GetAxis("Horizontal") < 0 || m_AimDir == Direction.LEFT)
-        {
-            m_AimDir = Direction.LEFT;
-            transform.Rotate(0f, 180f, 0f);
-        }
-        if (Input.GetAxis("Horizontal") > 0 || m_AimDir == Direction.RIGHT)
-        {
-            m_AimDir = Direction.RIGHT;
-        }
         if (Input.GetAxis("Vertical") < 0 || m_AimDir == Direction.BACK)
         {
             m_AimDir = Direction.BACK;
@@ -63,6 +54,15 @@ public class Gun : MonoBehaviour
         {
             m_AimDir = Direction.FORWARD;
             transform.Rotate(0f, -90f, 0f);
+        }
+        if (Input.GetAxis("Horizontal") < 0 || m_AimDir == Direction.LEFT)
+        {
+            m_AimDir = Direction.LEFT;
+            transform.Rotate(0f, 180f, 0f);
+        }
+        if (Input.GetAxis("Horizontal") > 0 || m_AimDir == Direction.RIGHT)
+        {
+            m_AimDir = Direction.RIGHT;
         }
     }
 }
