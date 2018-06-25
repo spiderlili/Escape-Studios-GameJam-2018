@@ -5,8 +5,8 @@ Winning submission for Escape Studios 2018 game jam in London (22-24 June). In k
 
 Download playable Windows build here: https://colonelsalt.itch.io/chrono-crack
 
-<img align="center" width="100" height="100" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTAucG5n/794x1000/2bPrwv.png"><img align="center" width="100" height="100" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTUucG5n/794x1000/kZvxY%2B.png">
-<img align="center" width="100" height="100" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTcucG5n/794x1000/yC3A79.png">
+<img align="center" width="640" height="480" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTAucG5n/794x1000/2bPrwv.png"><img align="center" width="640" height="480" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTUucG5n/794x1000/kZvxY%2B.png">
+<img align="center" width="640" height="480" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTcucG5n/794x1000/yC3A79.png">
 
 ### Development team:
 *Thomas Paul (Environment artist & writer)
