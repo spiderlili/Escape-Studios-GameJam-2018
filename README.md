@@ -9,8 +9,8 @@ Download playable Windows build here: https://colonelsalt.itch.io/chrono-crack
 <img align="center" width="256" height="144" src="https://img.itch.zone/aW1hZ2UvMjcyMzIxLzEzMTY5MTcucG5n/794x1000/yC3A79.png">
 
 ### Development team:
-*Thomas Paul (Environment artist & writer)
-*Jing Tan (Design, UI artist & texturer)
-*Yeonjae Lee (Character & UI artist)
-*Ollie Anderson (Composer & sound engineer)
-*Sondre Agledahl (Programmer)
+* Thomas Paul (Environment artist & writer)
+* Jing Tan (Design, UI artist & texturer)
+* Yeonjae Lee (Character & UI artist)
+* Ollie Anderson (Composer & sound engineer)
+* Sondre Agledahl (Programmer)
