@@ -250,4 +250,10 @@ public class DialogueController : MonoBehaviour
     {
         TimeController.OnTimeSwap -= OnTimeSwap;
     }
+    
+    private void OnEnable()
+    {
+        TimeController.OnTimeSwap += OnTimeSwap;
+    }
+}
 }
