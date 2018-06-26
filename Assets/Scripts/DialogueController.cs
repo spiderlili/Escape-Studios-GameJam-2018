@@ -256,4 +256,3 @@ public class DialogueController : MonoBehaviour
         TimeController.OnTimeSwap += OnTimeSwap;
     }
 }
-}
