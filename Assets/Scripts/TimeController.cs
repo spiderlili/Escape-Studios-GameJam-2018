@@ -87,5 +87,13 @@ public class TimeController : MonoBehaviour
             DialogueController.Instance.StartDialogue(DialogueEvent.FIRST_WARP);
         }
     }
+    private void OnEnable()
+    {
+        OnTimeSwap += OnTimeSwap;
+    }
 
+    private void OnDisable()
+    {
+        OnTimeSwap -= OnTimeSwap;
+    }
 }
